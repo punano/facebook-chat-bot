@@ -69,11 +69,13 @@ function sendMessage(senderId, message) {
   });
 }
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
+// app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+// app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
+var server_port =  process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 50000;
+var server_host = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1';
 
-server.listen(app.get('port'), app.get('ip'), function() {
-  console.log("Chat bot server listening at %s:%d ", app.get('ip'), app.get('port'));
+server.listen(server_port , server_host, function() {
+  console.log("Chat bot server listening at %s:%d ", server_port, server_host);
 });
 
 
